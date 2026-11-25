@@ -7,7 +7,7 @@ import generateToken from "../utils/generateToken.js";
 const cookieOptions = {
   httpOnly: true,
   secure: process.env.NODE_ENV === "production",
-  sameSite: "lax",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   path: "/",
   maxAge: 7 * 24 * 60 * 60 * 1000,
 };
@@ -147,7 +147,7 @@ export const logoutUser = (req, res) => {
   res.clearCookie("buddyToken", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     path: "/",
   });
 
@@ -157,7 +157,6 @@ export const logoutUser = (req, res) => {
   });
 };
 
- 
 // GET CURRENT LOGGED-IN USER
 export const getCurrentUser = async (req, res) => {
   try {
