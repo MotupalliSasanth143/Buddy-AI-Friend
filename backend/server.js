@@ -16,7 +16,7 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
   })
 );
@@ -24,11 +24,12 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-// Authentication routes
+// API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/conversations", conversationRoutes);
-// Backend test route
+
+// Backend health check
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
@@ -43,18 +44,14 @@ const startServer = async () => {
 
     const PORT = Number(process.env.PORT) || 5000;
 
-    const server = app.listen(PORT, "127.0.0.1", () => {
-      console.log(`Buddy server running on http://127.0.0.1:${PORT}`);
+    const server = app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Buddy server running on port ${PORT}`);
       console.log("Server listening:", server.listening);
-      console.log("Server address:", server.address());
     });
 
     server.on("error", (error) => {
       console.error("HTTP server error:", error);
-    });
-
-    server.on("close", () => {
-      console.log("HTTP server closed unexpectedly!");
+      process.exit(1);
     });
 
   } catch (error) {
@@ -64,4 +61,3 @@ const startServer = async () => {
 };
 
 startServer();
-
