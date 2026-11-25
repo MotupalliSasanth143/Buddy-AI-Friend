@@ -1,0 +1,33 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+**/dist/
+build/
+**/build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Runtime uploads
+backend/uploads/
+
+# Large background video
+frontend/public/videos/buddy-background.mp4
