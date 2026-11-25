@@ -5,7 +5,15 @@
 Buddy AI Friend is an AI-powered personal companion designed to make everyday conversations, learning, and productivity easier. Built using the MERN stack and Groq AI, Buddy provides intelligent responses, document analysis, and a friendly conversational experience through a modern, responsive interface.
 
 ---
+## 🌐 Live Demo
 
+**Try Buddy AI Friend here:**
+
+👉 https://buddy-ai-friend-frontend.vercel.app
+
+## 🚀 Backend API
+
+https://buddy-ai-friend-1.onrender.com
 ## ✨ Features
 
 - 💬 **AI-Powered Chat:** Interact with Buddy and receive intelligent, natural-language responses.
